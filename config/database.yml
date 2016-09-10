@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  port: 5432
+
+development:
+  <<: *default
+  database: medi_insurance_development
+  host: localhost
+  user: postgres
+  password: postgres
+
+test:
+  <<: *default
+  database: medi_insurance_test
+  host: localhost
+  user: postgres
+  password: postgres
+
+test:
+  <<: *default
+  database: medi_insurance_production
+  host: localhost
+  user: postgres
+  password: postgres
