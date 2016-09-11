@@ -46,7 +46,8 @@
           <dt>Authorized Agent</dt>
           <dd><%= @applicant.agent.name %></dd>
         </dl>
-        <% if @applicant.applicant_signature.image.present? %>
+       
+        <% if @applicant.applicant_signature.try(:image).present? %>
           <div class="pull-right">
             <%= wicked_pdf_image_tag (@applicant.applicant_signature.image.url) %>
           </div>
