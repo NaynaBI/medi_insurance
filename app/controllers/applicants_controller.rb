@@ -48,11 +48,6 @@ class ApplicantsController < ApplicationController
     redirect_to applicants_path
   end
 
-  def image
-    applicant = Applicant.find_by_id(params[:id])
-    send_data applicant.signature.image, type: "image/png", disposition: 'inline'
-  end
-
   def pdf_report
     @applicant = Applicant.find_by_id(params[:id])
 
