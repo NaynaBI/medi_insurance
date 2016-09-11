@@ -1,2 +1,0 @@
-class ApplicantsController < ApplicationController
-end

@@ -6,7 +6,7 @@ class DeviseCreateAgents < ActiveRecord::Migration
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
       t.string :name
-      t.string :address
+      t.text :address
       t.string :phone
       t.integer :communication_preference, limit: 1
       t.timestamps null: false

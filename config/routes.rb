@@ -12,7 +12,17 @@ Rails.application.routes.draw do
   get 'contact_us' => 'home#contact_us'
   get 'policies' => 'home#policies'
 
-  resources :applicants
+  resources :applicants do
+    collection do
+      get 'csv_import'
+      post 'csv_import'
+    end
+
+    member do
+      get 'image'
+      get 'pdf_report', defaults: { format: 'pdf' }
+    end
+  end
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

@@ -1,0 +1,33 @@
+<h1>
+  Signup
+</h1>
+
+<%= form_for @applicant, html: { class: "form-horizontal edit-applicant" } do |f| %>
+
+  <%= render 'form', f: f %>
+  
+  <%= fields_for @signature do |signature| %> 
+    <div class="form-group">
+      <%= signature.label :data, "Signature", class: "col-sm-2 control-label" %>
+      
+      <div class="col-sm-10">
+        <% if @signature.image.present? %>
+          <%= image_tag @signature.image.url %>
+        <% else %>
+          <div class="typed"></div>
+          <div class="sig sigWrapper">
+            <canvas class="pad" width="300" height="65"></canvas>
+            <%= signature.hidden_field :data, class: "output" %>
+          </div>        
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+      <%= link_to "Cancel", :back, class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

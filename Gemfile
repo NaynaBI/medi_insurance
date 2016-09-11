@@ -10,6 +10,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'wicked_pdf'
 gem 'signature-pad-rails'
 gem 'devise'
+gem 'jquery-datatables-rails'
+gem 'bootstrap-datepicker-rails'
+gem "paperclip"
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   gem 'byebug'

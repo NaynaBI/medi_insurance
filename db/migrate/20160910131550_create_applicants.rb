@@ -10,11 +10,11 @@ class CreateApplicants < ActiveRecord::Migration
       t.string :medicaid_number
       t.string :medicaid_case_worker
       t.string :ss_number
-      t.string :address
+      t.text :address
       t.string :email
       t.string :phone
       t.belongs_to :agent
-      t.string :timestamp, null: false
+      t.timestamps null: false
     end
   end
 end

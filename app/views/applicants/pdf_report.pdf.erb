@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" -%>
+  </head>
+  <body onload='number_pages'>
+    <div class="container">
+        <dl class="dl-horizontal">
+          <dt>Name</dt>
+          <dd><%= @applicant.name %></dd>
+  
+          <dt>Email</dt>
+          <dd><%= @applicant.email %></dd>
+
+          <dt>Date of Birth</dt>
+          <dd><%= @applicant.dob %></dd>
+
+          <dt>Sex</dt>
+          <dd><%= @applicant.sex %></dd>
+
+          <dt>State</dt>
+          <dd><%= @applicant.state %></dd>
+
+          <dt>Country</dt>
+          <dd><%= @applicant.country %></dd>
+
+          <dt>Facility of Residents</dt>
+          <dd><%= @applicant.facility_of_residents %></dd>
+
+          <dt>Medicaid Number</dt>
+          <dd><%= @applicant.medicaid_number %></dd>
+
+          <dt>Medicaid Case Worker</dt>
+          <dd><%= @applicant.medicaid_case_worker %></dd>
+
+          <dt>SS Number</dt>
+          <dd><%= @applicant.ss_number %></dd>
+
+          <dt>Address</dt>
+          <dd><%= @applicant.address %></dd>
+
+          <dt>Phone</dt>
+          <dd><%= @applicant.phone %></dd>
+
+          <dt>Authorized Agent</dt>
+          <dd><%= @applicant.agent.name %></dd>
+        </dl>
+        <% if @applicant.applicant_signature.image.present? %>
+          <div class="pull-right">
+            <%= wicked_pdf_image_tag (@applicant.applicant_signature.image.url) %>
+          </div>
+        <% end %>     
+    </div>
+  </body>
+</html>

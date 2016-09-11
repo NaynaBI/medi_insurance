@@ -1,0 +1,84 @@
+  <div class="form-group">
+    <%= f.label :name, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :phone, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :phone, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :dob, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :dob, class: "form-control", data: {provide: 'datepicker'} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :sex, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.select :sex, [["Male", "Male"], ["Female", "Female"]], { prompt: "Please Select" }, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :state, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :state, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :country, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :country, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :facility_of_residents, "Facility of Residents", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :facility_of_residents, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :medicaid_number, "Medicaid Number", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :medicaid_number, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :medicaid_case_worker, "Medicaid Case Worker", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :medicaid_case_worker, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :ss_number, "SS Number", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :ss_number, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :address, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :address, class: "form-control" %>
+    </div>
+  </div>
+  
