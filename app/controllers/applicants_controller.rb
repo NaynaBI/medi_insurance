@@ -2,7 +2,11 @@ class ApplicantsController < ApplicationController
   before_action :authenticate_agent!, except: [:new, :create]
 
   def index
-    @applicants = current_agent.applicants
+    if current_agent.admin?
+      @applicants = Applicant.all
+    else
+      @applicants = current_agent.applicants
+    end
   end
 
   def new
