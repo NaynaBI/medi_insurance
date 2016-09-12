@@ -1,7 +1,7 @@
 class Agent < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :recoverable, :validatable, :registerable
+  devise :database_authenticatable, :recoverable, :validatable, :registerable, :confirmable
 
   has_many :applicants
 
