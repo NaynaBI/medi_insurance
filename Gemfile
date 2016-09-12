@@ -14,6 +14,7 @@ gem 'jquery-datatables-rails'
 gem 'bootstrap-datepicker-rails'
 gem "paperclip"
 gem 'wkhtmltopdf-binary'
+gem 'aws-sdk'
 
 group :development, :test do
   gem 'byebug'
