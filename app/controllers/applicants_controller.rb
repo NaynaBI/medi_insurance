@@ -66,6 +66,30 @@ class ApplicantsController < ApplicationController
     end
   end
 
+  def send_form
+    client = DocusignRest::Client.new
+    document_envelope_response = client.create_envelope_from_document(
+      email: {
+       subject: "Dentsured form",
+       body: "Please signup the form."
+      },
+    signers: [
+    {
+      embedded: true,
+      name: 'Nayna',
+      email: 'biappstestemail@gmail.com',
+      role_name: 'Issuer'
+
+    }
+  ],
+  files: [
+    {path: 'public/form.pdf', name: 'form.pdf'}
+  ],
+  status: 'sent'
+)
+    redirect_to applicants_path
+  end
+
   private
 
   def applicant_params

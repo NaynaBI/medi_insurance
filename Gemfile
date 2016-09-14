@@ -15,6 +15,7 @@ gem 'bootstrap-datepicker-rails'
 gem "paperclip"
 gem 'wkhtmltopdf-binary'
 gem 'aws-sdk'
+gem 'docusign_rest'
 
 group :development, :test do
   gem 'byebug'

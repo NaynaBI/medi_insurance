@@ -63,6 +63,9 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    docusign_rest (0.1.1)
+      json
+      multipart-post (>= 1.2)
     erubis (2.7.0)
     execjs (2.7.0)
     globalid (0.3.7)
@@ -97,6 +100,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
+    multipart-post (2.0.0)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -187,6 +191,7 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   byebug
   devise
+  docusign_rest
   jbuilder (~> 2.0)
   jquery-datatables-rails
   jquery-rails
