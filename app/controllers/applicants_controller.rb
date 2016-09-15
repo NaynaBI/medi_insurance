@@ -71,7 +71,7 @@ class ApplicantsController < ApplicationController
     document_envelope_response = client.create_envelope_from_document(
       email: {
        subject: "Dentsured form",
-       body: "Please signup the form."
+       body: "Please go through the document and sign."
       },
     signers: [
     {
@@ -79,14 +79,12 @@ class ApplicantsController < ApplicationController
       name: 'Nayna',
       email: 'biappstestemail@gmail.com',
       role_name: 'Issuer'
-
     }
   ],
   files: [
-    {path: 'public/form.pdf', name: 'form.pdf'}
+          {path: "#{Rails.root}/public/form.pdf", name: 'form.pdf'}
   ],
-  status: 'sent'
-)
+  status: 'sent')
     redirect_to applicants_path
   end
 
