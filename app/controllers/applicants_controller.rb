@@ -15,12 +15,12 @@ class ApplicantsController < ApplicationController
 
   def create
     agent = current_agent || Agent.general
-    applicant = agent.applicants.new(applicant_params)
+    @applicant = agent.applicants.new(applicant_params)
 
-    if applicant.save
+    if @applicant.save
       redirect_to send_form_applicant_path(applicant)
     else
-      flash[:error] = applicant.errors.full_messages.to_sentence
+      flash[:error] = @applicant.errors.full_messages.to_sentence
       render :new
     end
   end
