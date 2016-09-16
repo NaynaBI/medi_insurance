@@ -14,7 +14,7 @@ class ApplicantsController < ApplicationController
   end
 
   def create
-    agent = current_agent || Agent.general
+    agent = current_agent || Agent.find_by_email("info@businessinsighter.com")
     @applicant = agent.applicants.new(applicant_params)
 
     if @applicant.save
