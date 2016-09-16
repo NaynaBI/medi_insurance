@@ -1,5 +1,5 @@
 class ApplicantsController < ApplicationController
-  before_action :authenticate_agent!, except: [:new, :create]
+  before_action :authenticate_agent!, except: [:new, :create, :send_form]
 
   def index
     if current_agent.admin?
@@ -15,9 +15,14 @@ class ApplicantsController < ApplicationController
 
   def create
     agent = current_agent || Agent.general
-    agent.applicants.create(applicant_params)
-    flash[:success] = "Applicant Signup Completed."
-    redirect_to applicants_path
+    applicant = agent.applicants.new(applicant_params)
+
+    if applicant.save
+      redirect_to send_form_applicant_path(applicant)
+    else
+      flash[:error] = applicant.errors.full_messages.to_sentence
+      render :new
+    end
   end
 
   def edit
@@ -52,21 +57,9 @@ class ApplicantsController < ApplicationController
     redirect_to applicants_path
   end
 
-  def pdf_report
-    @applicant = Applicant.find_by_id(params[:id])
-
-    respond_to do |format|
-      format.html
-      format.pdf do
-        render pdf: "#{@applicant.name}_signed_form",
-               show_as_html: params.key?('debug'),
-               outline: { outline: true,
-                          outline_depth: 10}
-      end
-    end
-  end
-
   def send_form
+    applicant = Applicant.find_by_id(params[:id])
+
     client = DocusignRest::Client.new
     document_envelope_response = client.create_envelope_from_document(
       email: {
@@ -75,17 +68,18 @@ class ApplicantsController < ApplicationController
       },
     signers: [
     {
-      embedded: true,
-      name: 'Nayna',
-      email: 'biappstestemail@gmail.com',
-      role_name: 'Issuer'
+      name: applicant.name,
+      email: applicant.email, #'biappstestemail@gmail.com'
+      role_name: 'Applicant'
     }
   ],
   files: [
           {path: "#{Rails.root}/public/form.pdf", name: 'form.pdf'}
   ],
   status: 'sent')
-    redirect_to applicants_path
+
+    flash[:notice] = "Thank you. Our Agent will contact you shortly."
+    redirect_to root_path
   end
 
   private

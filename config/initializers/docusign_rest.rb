@@ -9,7 +9,7 @@ DocusignRest.configure do |config|
   config.password       = 'NaynaBI1'
   config.integrator_key = '920f8820-b4b9-4453-9e44-d1b061ba96d4'
   config.account_id     = '1907319'
-  #config.endpoint       = 'https://www.docusign.net/restapi'
-  #config.api_version    = 'v1'
+  config.endpoint       = 'https://demo.docusign.net/restapi'
+  config.api_version    = 'v2'
 end
 
