@@ -16,6 +16,7 @@ gem "paperclip"
 gem 'wkhtmltopdf-binary'
 gem 'aws-sdk'
 gem 'docusign_rest'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug'

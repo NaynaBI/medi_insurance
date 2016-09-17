@@ -18,7 +18,7 @@ class ApplicantsController < ApplicationController
     @applicant = agent.applicants.new(applicant_params)
 
     if @applicant.save
-      redirect_to send_form_applicant_path(applicant)
+      redirect_to send_form_applicant_path(@applicant)
     else
       flash[:error] = @applicant.errors.full_messages.to_sentence
       render :new
