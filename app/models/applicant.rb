@@ -7,6 +7,8 @@ class Applicant < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
+  PLAN_LIST = { "A" => "A $139/month", "B" => "B $199/month", "C" => "C $139/month", "C+" => "C+ Additional $29 a month" }
+
   def self.csv_import(file, agent)
     CSV.foreach(file.path, headers: true) do |row|
       applicant_hash = row.to_hash

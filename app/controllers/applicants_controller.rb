@@ -116,8 +116,13 @@ class ApplicantsController < ApplicationController
   ],
   status: 'sent')
 
-    flash[:notice] = "Thank you. Our Agent will contact you shortly."
-    redirect_to root_path
+    flash[:notice] = "Thank you for submitting form..."
+
+    if current_agent
+      redirect_to applicants_path
+    else
+      redirect_to policies_path
+    end
   end
 
   def get_signed_form
@@ -125,15 +130,23 @@ class ApplicantsController < ApplicationController
 
     if @applicant.envelope_id.present?
       @applicant.get_signed_form
-      @filename = "#{@applicant.envelope_id}.pdf"
-      @file = "#{Rails.root.join('docusign_docs/' + @filename)}"
+      @filename = "docusign_docs/" + "#{@applicant.envelope_id}.pdf"
+      @file = "#{Rails.root.join(@filename)}"
+      Aws.config.update(
+                        credentials: Aws::Credentials.new(Figaro.env.AWS_ACCESS_KEY_ID, Figaro.env.AWS_SECRET_ACCESS_KEY),
+                        region: 'us-west-2'
+                        )
+      s3_bucket = Aws::S3::Bucket.new(name: "dentsures",region: "us-west-2")
+      obj = s3_bucket.object(@filename)
+      obj.upload_file(@filename, acl: 'public-read')
+      @applicant.signed_form_path = obj.public_url
+      @applicant.save
     end
-
   end
 
   private
 
   def applicant_params
-    params.require(:applicant).permit(:name, :dob, :sex, :state, :country, :facility_of_residents, :medicaid_number, :medicaid_case_worker, :ss_number, :address, :email, :phone, applicant_signature: [:data])
+    params.require(:applicant).permit(:name, :middle_initial, :last_name, :dob, :sex, :state, :city, :zip, :country, :facility_of_residents, :medicaid_number, :medicaid_case_worker, :ss_number, :address, :email, :phone, :communication_preference, :plan, :primary_dentist_name, :primary_dentist_telephone, applicant_signature: [:data])
   end
 end
