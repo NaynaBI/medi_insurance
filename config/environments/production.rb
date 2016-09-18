@@ -90,4 +90,6 @@ Rails.application.configure do
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+
+  BASE_URL = "http://medi-insurance.herokuapp.com/"
 end

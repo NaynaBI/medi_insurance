@@ -10,7 +10,8 @@
   
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit "Submit", class: "btn btn-primary" %>
+      <%= link_to "View Signed Form", get_signed_form_applicant_path(@applicant), class: "btn btn-primary" %>
+      <%= f.submit "Applicant Signature", class: "btn btn-primary" %>
       <%= link_to "Cancel", :back, class: "btn btn-primary" %>
     </div>
   </div>
