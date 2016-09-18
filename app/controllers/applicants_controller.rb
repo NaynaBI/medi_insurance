@@ -79,7 +79,7 @@ class ApplicantsController < ApplicationController
 
     client = DocusignRest::Client.new
     response = client.get_envelope_recipients(
-                                              envelope_id: @applicant.envelopeId,
+                                              envelope_id: @applicant.envelope_id,
                                               include_tabs: true,
                                               include_extended: true
                                               )
@@ -115,7 +115,9 @@ class ApplicantsController < ApplicationController
     {path: "#{Rails.root}/public/form.pdf", name: 'form.pdf'}
   ],
   status: 'sent')
-
+    applicant.envelope_id = document_envelope_response["envelopeId"]
+    applicant.envelope_status = document_envelope_response["status"]
+    applicant.save
     flash[:notice] = "Thank you for submitting form..."
 
     if current_agent
