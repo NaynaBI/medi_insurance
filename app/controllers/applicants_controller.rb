@@ -15,7 +15,12 @@ class ApplicantsController < ApplicationController
 
   def create
     agent = current_agent || Agent.find_by_email("info@businessinsighter.com")
+
+    ss_params = applicant_params.slice(:ss_number, :ss_number1, :ss_number2, :ss_number3)
+    applicant_attr = applicant_params.slice!(:ss_number, :ss_number1, :ss_number2, :ss_number3)
+
     @applicant = agent.applicants.new(applicant_params)
+    @applicant.ss_number = ss_params.values.join("-")
 
     if @applicant.save
       redirect_to send_form_applicant_path(@applicant)
@@ -62,7 +67,11 @@ class ApplicantsController < ApplicationController
 
   def update
     applicant = Applicant.find_by_id(params[:id])
-    applicant.update_attributes(applicant_params)
+
+    ss_params = applicant_params.slice(:ss_number, :ss_number1, :ss_number2, :ss_number3)
+    applicant.attributes = applicant_params.slice!(:ss_number, :ss_number1, :ss_number2, :ss_number3)
+    applicant.ss_number = ss_params.values.join("-")
+    applicant.save
 
     redirect_to capture_signature_applicant_path(applicant)
   end
@@ -149,6 +158,6 @@ class ApplicantsController < ApplicationController
   private
 
   def applicant_params
-    params.require(:applicant).permit(:name, :middle_initial, :last_name, :dob, :sex, :state, :city, :zip, :country, :facility_of_residents, :medicaid_number, :medicaid_case_worker, :ss_number, :address, :email, :phone, :communication_preference, :plan, :primary_dentist_name, :primary_dentist_telephone, applicant_signature: [:data])
+    params.require(:applicant).permit(:name, :middle_initial, :last_name, :dob, :sex, :state, :city, :zip, :country, :facility_of_residents, :medicaid_number, :medicaid_case_worker, :ss_number, :ss_number1, :ss_number2, :ss_number3, :address, :email, :phone, :communication_preference, :plan, :primary_dentist_name, :primary_dentist_telephone, applicant_signature: [:data])
   end
 end

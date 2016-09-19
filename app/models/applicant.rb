@@ -1,6 +1,8 @@
 require 'csv'
 
 class Applicant < ActiveRecord::Base
+  attr_accessor :ss_number1, :ss_number2, :ss_number3
+
   belongs_to :agent
   has_one :applicant_signature
 
