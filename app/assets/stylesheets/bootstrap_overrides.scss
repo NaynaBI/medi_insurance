@@ -1,6 +1,7 @@
 .navbar-default {
     background-color: #005387 !important;
     border-color: #005387 !important;
+    height: 80px;
 }
 
 .navbar {
@@ -13,4 +14,17 @@
 
 .navbar-default .navbar-brand {
     color: #fff !important;
+    margin-top: -8px;
+}
+
+.home-banner {
+    height: 300px;
+    overflow: hidden;
+}
+.signup-wrapper {
+    margin-top: 20px;
+    text-align: center;
+}
+.signup-wrapper a {
+    width: 200px;
 }

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
     member do
       get 'pdf_report', defaults: { format: 'pdf' }
+      get 'send_form', 'capture_signature', 'signature_confirmation', 'get_signed_form'
     end
   end
 

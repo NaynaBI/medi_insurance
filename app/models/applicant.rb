@@ -7,6 +7,8 @@ class Applicant < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
+  PLAN_LIST = { "A" => "A $139/month", "B" => "B $199/month", "C" => "C $139/month", "C+" => "C+ Additional $29 a month" }
+
   def self.csv_import(file, agent)
     CSV.foreach(file.path, headers: true) do |row|
       applicant_hash = row.to_hash
@@ -26,5 +28,32 @@ class Applicant < ActiveRecord::Base
       applicant.phone = applicant_hash["Phone"]
       applicant.save
     end
+  end
+
+  def docusign_client
+    @docusign_client ||= DocusignRest::Client.new
+  end
+
+  def envelope_url(return_url, default_url)
+    response = docusign_client.get_recipient_view(
+                                     client_id: id,
+                                     envelope_id: envelope_id,
+                                     name: "Test Host",
+                                     email: "biappstestemail@gmail.com",
+                                     return_url: return_url
+                                     )
+    if response["url"].present?
+      return response["url"]
+    else
+      return default_url
+    end
+  end
+
+  def get_signed_form
+    response = docusign_client.get_document_from_envelope(
+                                    envelope_id: envelope_id,
+                                    document_id: 1,
+                                    local_save_path: "#{Rails.root.join('docusign_docs/' + envelope_id + '.pdf')}"
+                                    )
   end
 end

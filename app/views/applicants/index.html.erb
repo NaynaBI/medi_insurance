@@ -25,7 +25,7 @@
   <tbody>
     <% @applicants.each do |applicant| %>
       <tr>
-        <td><%= link_to applicant.name, applicant_path(applicant) %></td>
+        <td><%= link_to applicant.name, edit_applicant_path(applicant) %></td>
         <td><%= applicant.email %></td>
         <td><%= applicant.dob %></td>
         <td><%= applicant.state %></td>
@@ -36,6 +36,7 @@
   </tbody>
 </table>
 
+<%= link_to "Sign up unlisted Patient", new_applicant_path, class: "btn btn-primary" %>
 
 <script type="text/javascript">
   $('.applicants').DataTable();

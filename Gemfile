@@ -15,11 +15,14 @@ gem 'bootstrap-datepicker-rails'
 gem "paperclip"
 gem 'wkhtmltopdf-binary'
 gem 'aws-sdk'
+gem 'docusign_rest'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem "letter_opener"
+  gem "pry-rails"
 end
 

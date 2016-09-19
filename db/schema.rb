@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912184823) do
+ActiveRecord::Schema.define(version: 20160918183954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 20160912184823) do
   end
 
   create_table "applicants", force: :cascade do |t|
-    t.string   "name",                            null: false
+    t.string   "name",                                null: false
     t.date     "dob"
-    t.string   "sex",                   limit: 6
+    t.string   "sex",                       limit: 6
     t.string   "state"
     t.string   "country"
     t.string   "facility_of_residents"
@@ -63,8 +63,21 @@ ActiveRecord::Schema.define(version: 20160912184823) do
     t.string   "phone"
     t.integer  "agent_id"
     t.text     "signature"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "envelope_id"
+    t.string   "envelope_status"
+    t.string   "first_name"
+    t.string   "middle_initial"
+    t.string   "last_name"
+    t.string   "city"
+    t.string   "zip"
+    t.string   "medical_representative"
+    t.string   "signed_form_path"
+    t.string   "communication_preference"
+    t.string   "plan"
+    t.string   "primary_dentist_name"
+    t.string   "primary_dentist_telephone"
   end
 
 end

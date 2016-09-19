@@ -1,0 +1,9 @@
+<% if @file %>
+  <div class="docusign-signed-pdf">
+    <object data="<%= @applicant.signed_form_path %>" type="application/pdf" width="1000" height="600">
+       alt : <a href="<%= @applicant.signed_form_path %>"><%= @applicant.name %></a>
+    </object>
+  </div>
+<% else %>
+  <p> There is no signed form available yet. Please first complete the signing procedure.</p>
+<% end %>
