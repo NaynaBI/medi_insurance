@@ -155,6 +155,11 @@ class ApplicantsController < ApplicationController
     end
   end
 
+  def get_envelope_status
+    @applicant = Applicant.find_by_id(params[:id])
+    @applicant.get_envelope_status
+  end
+
   private
 
   def applicant_params

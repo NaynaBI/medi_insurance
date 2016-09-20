@@ -57,5 +57,12 @@ class Applicant < ActiveRecord::Base
                                     document_id: 1,
                                     local_save_path: "#{Rails.root.join('docusign_docs/' + envelope_id + '.pdf')}"
                                     )
+
+  end
+
+  def get_envelope_status
+    response = docusign_client.get_envelope_status(envelope_id: envelope_id)
+    self.envelope_status = response["status"]
+    self.save
   end
 end

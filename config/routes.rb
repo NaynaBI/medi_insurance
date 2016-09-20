@@ -15,12 +15,13 @@ Rails.application.routes.draw do
 
   resources :applicants do
     collection do
+      get 'import'
       post 'csv_import'
     end
 
     member do
       get 'pdf_report', defaults: { format: 'pdf' }
-      get 'send_form', 'capture_signature', 'signature_confirmation', 'get_signed_form'
+      get 'send_form', 'capture_signature', 'signature_confirmation', 'get_signed_form', 'get_envelope_status'
     end
   end
 

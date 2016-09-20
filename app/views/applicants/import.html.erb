@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h2>Applicants CSV Import</h2>
+  </div>
+</div>
+
+<%= form_tag csv_import_applicants_path, multipart: true, class: "form-inline applicants-csv-import" do %>
+  <div class="form-group">
+    <%= file_field_tag :file, class: "form-control", required: true %>
+  </div>
+  <%= submit_tag "Import CSV", class: "btn btn-primary" %>
+<% end %>
