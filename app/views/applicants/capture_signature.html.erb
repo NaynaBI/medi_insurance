@@ -1,1 +1,1 @@
-<iframe src="<%= @applicant.envelope_url(signature_confirmation_applicant_url(@applicant, host: BASE_URL), edit_applicant_url(@applicant, host: BASE_URL)) %>", frameborder=0, class="docusign-iframe"></iframe>
+<iframe src="<%= @applicant.envelope_url(signature_confirmation_applicant_url(@applicant, host: Figaro.env.BASE_URL), edit_applicant_url(@applicant, host: Figaro.env.BASE_URL)) %>", frameborder=0, class="docusign-iframe"></iframe>

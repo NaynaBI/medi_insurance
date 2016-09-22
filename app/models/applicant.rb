@@ -40,8 +40,8 @@ class Applicant < ActiveRecord::Base
     response = docusign_client.get_recipient_view(
                                      client_id: id,
                                      envelope_id: envelope_id,
-                                     name: "Test Host",
-                                     email: "biappstestemail@gmail.com",
+                                     name: "Test Host", #host name for in person signer
+                                     email: "biappstestemail@gmail.com",  #host email for in person signer
                                      return_url: return_url
                                      )
     if response["url"].present?
