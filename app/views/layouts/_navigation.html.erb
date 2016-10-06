@@ -15,16 +15,17 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-left">
         <li>
-         <%= link_to image_tag('Logo.png'), root_path, class: "navbar-brand", size: "50x50"%> 
+          <%= link_to image_tag('Logo.png', size: "65x65"), root_path %>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+
         <% if agent_signed_in? %>
-          <% if current_agent.admin? %>
-            <li><%= link_to "Import", import_applicants_path %></li>
-          <% end %>
-          <li><%= link_to "Logout", destroy_agent_session_path, method: :delete %></li> <% else %>
-          <li><%= link_to "Login", new_agent_session_path %></li>
+        <% if current_agent.admin? %>
+        <li><%= link_to "Import", import_applicants_path %></li>
+        <% end %>
+        <li><%= link_to "Logout", destroy_agent_session_path, method: :delete %></li> <% else %>
+        <li><%= link_to "Login", new_agent_session_path %></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

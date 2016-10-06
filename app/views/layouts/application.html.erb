@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Dentsured</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <%= render 'layouts/navigation' %>
+  <head>
+    <title>Dentsured</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render 'layouts/navigation' %>
 
-  <% flash.each do |key, value| %>
+    <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>"><%= value %></div>
-  <% end %>
+    <% end %>
 
-  <div class="container">
-    <%= yield %>
-  </div>
+    <div class="container">
+      <%= yield %>
+    </div>
 
-  <p></p><p></p><p></p>
-  <footer class="footer">
-  <small>
-  <p>Copyright &copy; Dentsures  |   Contact information: <a href="mailto:info@dentured.com">
-  info@dentured.com</a>   |   1 844 877 8733</p>
-    </small>
-  </center>
-</footer>
-</body>
+    <p></p><p></p><p></p>
+    <footer class="footer">
+      <small>
+        <p>Copyright &copy; Dentsures  |   Contact information: <a href="mailto:info@dentured.com">
+          info@dentured.com</a>   |   1 844 877 8733</p>
+      </small>
+<!--       </center> -->
+    </footer>
+  </body>
 </html>
