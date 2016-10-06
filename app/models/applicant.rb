@@ -41,7 +41,7 @@ class Applicant < ActiveRecord::Base
                                      client_id: id,
                                      envelope_id: envelope_id,
                                      name: "Test Host", #host name for in person signer
-                                     email: "info@businessinsighter.com",  #host email for in person signer (originally "biappstestemail@gmail.com")
+                                     email: "biappstestemail@gmail.com",  #host email for in person signer
                                      return_url: return_url
                                      )
     if response["url"].present?

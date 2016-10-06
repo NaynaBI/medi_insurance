@@ -47,7 +47,7 @@ class ApplicantsController < ApplicationController
         },
         in_person_signers: [{
           embedded: true,
-          hostEmail: "info@businessinsighter.com", #originally "biappstestemail@gmail.com"
+          hostEmail: "biappstestemail@gmail.com",
           hostName: "Test Host",
           recipientId: @applicant.id,
           signerName: @applicant.name,
