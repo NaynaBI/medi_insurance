@@ -14,7 +14,7 @@ class ApplicantsController < ApplicationController
   end
 
   def create
-    agent = current_agent || Agent.find_by_email("info@businessinsighter.com")
+    agent = current_agent || Agent.find_or_create_agent("info@businessinsighter.com")
 
     ss_params = applicant_params.slice(:ss_number, :ss_number1, :ss_number2, :ss_number3)
     applicant_attr = applicant_params.slice!(:ss_number, :ss_number1, :ss_number2, :ss_number3)
@@ -23,7 +23,12 @@ class ApplicantsController < ApplicationController
     @applicant.ss_number = ss_params.values.join("-")
 
     if @applicant.save
-      redirect_to send_form_applicant_path(@applicant)
+      if params[:unlisted_applicant] == "true"
+        flash[:notice] = "Thank you for submitting form..."
+        redirect_to applicants_path
+      else
+        redirect_to send_form_applicant_path(@applicant)
+      end
     else
       flash[:error] = @applicant.errors.full_messages.to_sentence
       render :new

@@ -9,7 +9,7 @@ complete the contract</h2>
 <%= form_for @applicant, html: { class: "form-horizontal" } do |f| %>
 
   <%= render 'form', f: f %>
-  
+  <%= hidden_field_tag :unlisted_applicant, params[:unlisted_applicant] %>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit "Submit", class: "btn btn-primary" %>

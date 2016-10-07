@@ -29,7 +29,7 @@
   </tbody>
 </table>
 
-<%= link_to "Sign up unlisted Patient", new_applicant_path, class: "btn btn-primary" %>
+<%= link_to "Sign up unlisted Patient", new_applicant_path(unlisted_applicant: true), class: "btn btn-primary" %>
 
 <script type="text/javascript">
   $('.applicants').DataTable();
